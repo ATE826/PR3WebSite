@@ -13,9 +13,6 @@ const app = express();
 // Устанавливаем порт, на котором будет работать сервер
 const port = 8080;
 
- // Получение списка товаров
- app.get()
-
 app.use(bodyParser.json());
 
 let products = JSON.parse(fs.readFileSync('products.json', 'utf8'));

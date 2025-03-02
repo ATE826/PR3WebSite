@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог товаров</title>
+  <style>
+    .product-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Каталог товаров</h1>
+  <div id="products-list"></div>
+
+  <script>
+    fetch('http://localhost:8080/api/products')
+      .then(response => response.json())
+      .then(data => {
+        const productsList = document.getElementById('products-list');
+        data.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.classList.add('product-card');
+          productCard.innerHTML = `
+            <h3>${product.name}</h3>
+            <p>Цена: ${product.price}₽</p>
+            <p>${product.description}</p>
+            <p>Категории: ${product.categories.join(', ')}</p>
+          `;
+          productsList.appendChild(productCard);
+        });
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  </script>
+</body>
+</html>

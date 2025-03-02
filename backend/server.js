@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-    fs.readFile('index.html', 'utf8', (err, data) => {
+    fs.readFile('C:\\VSCode projects\\FrontendBackend\\PR3WebSite\\Frontend\\index.html', 'utf8', (err, data) => {
         if (err) {
           res.status(500).send('Error reading HTML file');
         } else {
